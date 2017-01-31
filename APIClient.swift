@@ -24,7 +24,8 @@ class APIClient {
             if let jsonData = data {
                 do {
                     let jsonResponse = try
-                    JSONSerialization.jsonObject(with: jsonData, options: []) as! [String: Any]
+                        //for each dictionary in array
+                        JSONSerialization.jsonObject(with: jsonData, options: []) as! [{String: Any}]
                 }
             }
         }

@@ -23,8 +23,12 @@ class APIClient {
             if let jsonData = data {
                 do {
                     let jsonResponse = try JSONSerialization.jsonObject(with: jsonData, options: []) as! [String: Any]
-                    print(jsonResponse)
                     //get to the array inside the search response loop through the array from each dict within, initialize a movie object
+                    let searchResults = jsonResponse["Search"] as! [[String: String]]
+                    for movie in searchResults {
+                        let movieResult = MovieInfo(movie: movie)
+                        print(movieResult.title)
+                    }
                     
                 } catch {
                     

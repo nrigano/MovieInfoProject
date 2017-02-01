@@ -28,11 +28,11 @@ class MovieInfo {
     }
     
     init(movie: [String: String]) {
-        if let title = movie["Title"] {self.title = title}
-        if let year = movie["Year"] {self.year = year}
-        if let imdbID = movie["imdbIB"] {self.imdbID = imdbID}
-        if let type = movie["Type"] {self.type = type}
-        if let poster = movie["Poster"] {self.poster = poster}
+        if let title = movie["Title"] {self.title = title} else {self.title = ""}
+        if let year = movie["Year"] {self.year = year} else {self.year = ""}
+        if let imdbID = movie["imdbIB"] {self.imdbID = imdbID} else {self.imdbID = ""}
+        if let type = movie["Type"] {self.type = type} else {self.type = ""}
+        if let poster = movie["Poster"] {self.poster = poster} else {self.poster = ""}
         
     }
     

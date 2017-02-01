@@ -418,6 +418,7 @@
 				D7469F741E3FC53D005BE5F5 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		D7469F751E3FC53D005BE5F5 /* Build configuration list for PBXNativeTarget "MovieInfoProjectTests" */ = {
 			isa = XCConfigurationList;
@@ -426,6 +427,7 @@
 				D7469F771E3FC53D005BE5F5 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 

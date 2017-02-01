@@ -9,7 +9,7 @@
 import Foundation
 
 class APIClient {
-    func searchDB(withTitle: String, plotLength: String, completion: @escaping () -> ()) {
+    class func searchDB(withTitle: String, plotLength: String, completion: @escaping () -> ()) {
         //gonna have to split up search word by word.  "Star Wars" into star+wars.  Yes.  How did you solve this problem before?
         //{ [{}, {}, {}]}
         //next: make sure you're calling for the information above.  Each movie is a dictionary inside an array insiade a dictioanry.  Format correctly and check in console
@@ -22,19 +22,17 @@ class APIClient {
         let dataTask = session.dataTask(with: url) { (data, response, error) in
             if let jsonData = data {
                 do {
-                    let jsonResponse = try
-                    //for each dictionary in array
-                    for each movie in jsonResponse {
-                        
-                        
-                        JSONSerialization.jsonObject(with: jsonData, options: []) as! [String: Any]
-                        
-                    }
+                    let jsonResponse = try JSONSerialization.jsonObject(with: jsonData, options: []) as! [String: Any]
+                    print(jsonResponse)
+                    //get to the array inside the search response loop through the array from each dict within, initialize a movie object
+                    
+                } catch {
+                    
                 }
                 
                 
             }
         }
-        
+        dataTask.resume()
     }
 }

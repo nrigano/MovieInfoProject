@@ -16,6 +16,9 @@ class ViewController: UIViewController {
         APIClient.searchDB(withTitle: "lebowski", plotLength: "short") { 
         
         }
+        APIClient.searchWithIMDB(withID: "tt0076759", plotLength: "short") {
+            
+        }
         
     }
 

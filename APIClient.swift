@@ -10,11 +10,6 @@ import Foundation
 
 class APIClient {
     class func searchDB(withTitle: String, plotLength: String, completion: @escaping () -> ()) {
-        //gonna have to split up search word by word.  "Star Wars" into star+wars.  Yes.  How did you solve this problem before?
-        //{ [{}, {}, {}]}
-        //next: make sure you're calling for the information above.  Each movie is a dictionary inside an array insiade a dictioanry.  Format correctly and check in console
-        //make an enum: short or long plot summary
-        
         let movieTitle = withTitle.replacingOccurrences(of: " ", with: "+")
         let urlString = "http://www.omdbapi.com/?s=\(movieTitle)&y=&plot=\(plotLength)&r=json"
         guard let url = URL(string: urlString) else {return}
@@ -40,4 +35,29 @@ class APIClient {
         }
         dataTask.resume()
     }
+    
+    
+    class func searchWithIMDB(withID: String, plotLength: String, completion: @escaping () -> ()) {
+        let urlString = "http://www.omdbapi.com/?i=tt0076759&plot=short&r=json"
+        guard let url = URL(string: urlString) else {return}
+        let session = URLSession.shared
+        let dataTask = session.dataTask(with: url) { (data, response, error) in
+            if let jsonData = data {
+                do {
+                    let jsonResponse = try JSONSerialization.jsonObject(with: jsonData, options: []) as! [String: Any]
+                    let movieResult = MovieInfo(movie: jsonResponse as! [String : String])
+                    print(movieResult.title)
+                    
+                } catch {
+                    
+                }
+                
+                
+            }
+            
+        }
+        dataTask.resume()
+        
+    }
+    
 }

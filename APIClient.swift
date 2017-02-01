@@ -15,7 +15,8 @@ class APIClient {
         //next: make sure you're calling for the information above.  Each movie is a dictionary inside an array insiade a dictioanry.  Format correctly and check in console
         //make an enum: short or long plot summary
         
-        let urlString = "http://www.omdbapi.com/?s=star+wars&y=&plot=short&r=json"
+        let movieTitle = withTitle.replacingOccurrences(of: " ", with: "+")
+        let urlString = "http://www.omdbapi.com/?s=\(movieTitle)&y=&plot=\(plotLength)&r=json"
         guard let url = URL(string: urlString) else {return}
         let session = URLSession.shared
         

@@ -6,6 +6,10 @@
 //  Copyright © 2017 Nick. All rights reserved.
 //
 
+
+//take in dictionary
+
+
 import Foundation
 
 class MovieInfo {
@@ -22,4 +26,16 @@ class MovieInfo {
         self.type = type
         self.poster = poster
     }
+    
+    init(movie: [String: String]) {
+        if let title = movie["Title"] {self.title = title}
+        if let year = movie["Year"] {self.year = year}
+        if let imdbID = movie["imdbIB"] {self.imdbID = imdbID}
+        if let type = movie["Type"] {self.type = type}
+        if let poster = movie["Poster"] {self.poster = poster}
+        
+    }
+    
+    
+    
 }

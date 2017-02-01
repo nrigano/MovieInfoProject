@@ -9,9 +9,9 @@
 import Foundation
 
 class APIClient {
-    class func searchDB(withTitle: String, plotLength: String, completion: @escaping () -> ()) {
+    class func searchDB(withTitle: String, completion: @escaping () -> ()) {
         let movieTitle = withTitle.replacingOccurrences(of: " ", with: "+")
-        let urlString = "http://www.omdbapi.com/?s=\(movieTitle)&y=&plot=\(plotLength)&r=json"
+        let urlString = "http://www.omdbapi.com/?s=\(movieTitle)&r=json"
         guard let url = URL(string: urlString) else {return}
         let session = URLSession.shared
         
@@ -38,14 +38,14 @@ class APIClient {
     
     
     class func searchWithIMDB(withID: String, plotLength: String, completion: @escaping () -> ()) {
-        let urlString = "http://www.omdbapi.com/?i=tt0076759&plot=short&r=json"
+        let urlString = "http://www.omdbapi.com/?i=\(withID)&plot=\(plotLength)&r=json"
         guard let url = URL(string: urlString) else {return}
         let session = URLSession.shared
         let dataTask = session.dataTask(with: url) { (data, response, error) in
             if let jsonData = data {
                 do {
-                    let jsonResponse = try JSONSerialization.jsonObject(with: jsonData, options: []) as! [String: Any]
-                    let movieResult = MovieInfo(movie: jsonResponse as! [String : String])
+                    let jsonResponse = try JSONSerialization.jsonObject(with: jsonData, options: []) as! [String: String]
+                    let movieResult = MovieInfo(movie: jsonResponse)
                     print(movieResult.title)
                     
                 } catch {

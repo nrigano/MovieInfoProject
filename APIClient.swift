@@ -13,7 +13,6 @@ class APIClient {
         //gonna have to split up search word by word.  "Star Wars" into star+wars.  Yes.  How did you solve this problem before?
         //{ [{}, {}, {}]}
         //next: make sure you're calling for the information above.  Each movie is a dictionary inside an array insiade a dictioanry.  Format correctly and check in console
-        //make a movie class: title, year, imdbID, type, poster.
         //make an enum: short or long plot summary
         
         let urlString = "http://www.omdbapi.com/?s=star+wars&y=&plot=short&r=json"
@@ -24,9 +23,16 @@ class APIClient {
             if let jsonData = data {
                 do {
                     let jsonResponse = try
-                        //for each dictionary in array
-                        JSONSerialization.jsonObject(with: jsonData, options: []) as! [{String: Any}]
+                    //for each dictionary in array
+                    for each movie in jsonResponse {
+                        
+                        
+                        JSONSerialization.jsonObject(with: jsonData, options: []) as! [String: Any]
+                        
+                    }
                 }
+                
+                
             }
         }
         

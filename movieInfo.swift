@@ -47,16 +47,13 @@ class MovieInfo {
         self.released = released
         self.runtime = runtime
         self.genre = genre
-        
         self.director = director
         self.writer = writer
         self.actors = actors
-        
         self.plot = plot
         self.language = language
         self.country = country
         self.awards = awards
-        
         self.metascore = metascore
         self.imdbRating = imdbRating
         self.imdbVotes = imdbVotes
@@ -69,21 +66,17 @@ class MovieInfo {
         if let imdbID = movie["imdbIB"] {self.imdbID = imdbID} else {self.imdbID = ""}
         if let type = movie["Type"] {self.type = type} else {self.type = ""}
         if let poster = movie["Poster"] {self.poster = poster} else {self.poster = ""}
-        
         if let rated = movie["Rated"] {self.rated = rated} else {self.rated = ""}
         if let released = movie["Released"] {self.released = released} else {self.released = ""}
         if let runtime = movie["Runtime"] {self.runtime = runtime} else {self.runtime = ""}
         if let genre = movie["Genre"] {self.genre = genre} else {self.genre = ""}
-        
         if let director = movie["Director"] {self.director = director} else {self.director = ""}
         if let writer =  movie["Writer"] {self.writer = writer} else {self.writer = ""}
         if let actors = movie["Actors"] {self.actors = actors} else {self.actors = ""}
-        
         if let plot = movie["Plot"] {self.plot = plot} else {self.plot = ""}
         if let language = movie["Language"] {self.language = language} else {self.language = ""}
         if let country = movie["Country"] {self.country = country} else {self.country = ""}
         if let awards = movie["Awards"] {self.awards = awards} else {self.awards = ""}
-        
         if let metascore = movie["Metascore"] {self.metascore = metascore} else {self.metascore = ""}
         if let imdbRating = movie["imdbRating"] {self.imdbRating = imdbRating} else {self.imdbRating = ""}
         if let imdbVotes = movie["imdbVotes"] {self.imdbVotes = imdbVotes} else {self.imdbVotes = ""}

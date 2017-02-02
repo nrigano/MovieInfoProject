@@ -46,7 +46,7 @@ class APIClient {
                 do {
                     let jsonResponse = try JSONSerialization.jsonObject(with: jsonData, options: []) as! [String: String]
                     let movieResult = MovieInfo(movie: jsonResponse)
-                    print(movieResult.title)
+                    dump(movieResult)
                     
                 } catch {
                     

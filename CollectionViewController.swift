@@ -9,7 +9,24 @@
 import Foundation
 import UIKit
 
-class UICollectionViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
+class MovieViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
+    private let resultsCellReuse = "resultsCell"
+    private var collectionView: UICollectionView = UICollectionView(frame: CGRect.zero, collectionViewLayout: UICollectionViewFlowLayout())
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        self.collectionView.delegate = self
+        self.collectionView.dataSource = self
+        self.collectionView.backgroundColor = UIColor.getRandomColor()
+        
+        self.collectionView.register(UICollectionViewCell.self, forCellWithReuseIdentifier: resultsCellReuse)
+        
+        self.view.addSubview(self.collectionView)
+        let frame = self.view.frame
+       
+    
+    }
     
     //number of items in section should be based on search results.  So I should call that here?
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {

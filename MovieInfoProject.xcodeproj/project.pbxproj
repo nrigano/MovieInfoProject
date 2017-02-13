@@ -16,8 +16,9 @@
 		D7469F6E1E3FC53D005BE5F5 /* MovieInfoProjectTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7469F6D1E3FC53D005BE5F5 /* MovieInfoProjectTests.swift */; };
 		D7469F791E3FC5CB005BE5F5 /* APIClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7469F781E3FC5CB005BE5F5 /* APIClient.swift */; };
 		D7469F7B1E41258A005BE5F5 /* movieInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7469F7A1E41258A005BE5F5 /* movieInfo.swift */; };
-		D77CF96F1E43BE2100D0D3F7 /* CollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D77CF96E1E43BE2100D0D3F7 /* CollectionViewController.swift */; };
+		D77CF96F1E43BE2100D0D3F7 /* MovieViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D77CF96E1E43BE2100D0D3F7 /* MovieViewController.swift */; };
 		D77CF9731E43DB8C00D0D3F7 /* ColorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D77CF9721E43DB8C00D0D3F7 /* ColorExtension.swift */; };
+		D7B407AA1E4FCBC400308715 /* MovieDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7B407A91E4FCBC400308715 /* MovieDetailViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -44,8 +45,9 @@
 		D7469F6F1E3FC53D005BE5F5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D7469F781E3FC5CB005BE5F5 /* APIClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = APIClient.swift; path = ../APIClient.swift; sourceTree = "<group>"; };
 		D7469F7A1E41258A005BE5F5 /* movieInfo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = movieInfo.swift; path = ../movieInfo.swift; sourceTree = "<group>"; };
-		D77CF96E1E43BE2100D0D3F7 /* CollectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CollectionViewController.swift; path = ../CollectionViewController.swift; sourceTree = "<group>"; };
+		D77CF96E1E43BE2100D0D3F7 /* MovieViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MovieViewController.swift; path = ../MovieViewController.swift; sourceTree = "<group>"; };
 		D77CF9721E43DB8C00D0D3F7 /* ColorExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ColorExtension.swift; path = ../ColorExtension.swift; sourceTree = "<group>"; };
+		D7B407A91E4FCBC400308715 /* MovieDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MovieDetailViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -90,7 +92,8 @@
 				D77CF9721E43DB8C00D0D3F7 /* ColorExtension.swift */,
 				D7469F781E3FC5CB005BE5F5 /* APIClient.swift */,
 				D7469F7A1E41258A005BE5F5 /* movieInfo.swift */,
-				D77CF96E1E43BE2100D0D3F7 /* CollectionViewController.swift */,
+				D77CF96E1E43BE2100D0D3F7 /* MovieViewController.swift */,
+				D7B407A91E4FCBC400308715 /* MovieDetailViewController.swift */,
 				D7469F551E3FC53D005BE5F5 /* AppDelegate.swift */,
 				D7469F571E3FC53D005BE5F5 /* ViewController.swift */,
 				D7469F591E3FC53D005BE5F5 /* Main.storyboard */,
@@ -214,10 +217,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D77CF96F1E43BE2100D0D3F7 /* CollectionViewController.swift in Sources */,
+				D77CF96F1E43BE2100D0D3F7 /* MovieViewController.swift in Sources */,
 				D7469F5E1E3FC53D005BE5F5 /* MovieInfoProject.xcdatamodeld in Sources */,
 				D7469F581E3FC53D005BE5F5 /* ViewController.swift in Sources */,
 				D7469F561E3FC53D005BE5F5 /* AppDelegate.swift in Sources */,
+				D7B407AA1E4FCBC400308715 /* MovieDetailViewController.swift in Sources */,
 				D7469F791E3FC5CB005BE5F5 /* APIClient.swift in Sources */,
 				D77CF9731E43DB8C00D0D3F7 /* ColorExtension.swift in Sources */,
 				D7469F7B1E41258A005BE5F5 /* movieInfo.swift in Sources */,

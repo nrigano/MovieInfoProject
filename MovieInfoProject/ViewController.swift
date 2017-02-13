@@ -13,12 +13,12 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
-        APIClient.searchDB(withTitle: "lebowski") {
-        
-        }
-        APIClient.searchWithIMDB(withID: "tt0076759", plotLength: "short") {
-            
-        }
+//        APIClient.searchDB(withTitle: "lebowski") {
+//            
+//        }
+//        APIClient.searchWithIMDB(withID: "tt0076759", plotLength: "short") {
+//            
+//        }
         
     }
 

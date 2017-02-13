@@ -9,7 +9,7 @@
 import Foundation
 
 class APIClient {
-    class func searchDB(withTitle: String, completion: @escaping () -> ()) {
+    class func searchDB(withTitle: String, completion: @escaping ([MovieInfo]) -> ()) {
         let movieTitle = withTitle.replacingOccurrences(of: " ", with: "+")
         let urlString = "http://www.omdbapi.com/?s=\(movieTitle)&r=json"
         guard let url = URL(string: urlString) else {return}
@@ -18,13 +18,16 @@ class APIClient {
         let dataTask = session.dataTask(with: url) { (data, response, error) in
             if let jsonData = data {
                 do {
+                    var resultsArray = [MovieInfo]()
                     let jsonResponse = try JSONSerialization.jsonObject(with: jsonData, options: []) as! [String: Any]
                     //get to the array inside the search response loop through the array from each dict within, initialize a movie object
                     let searchResults = jsonResponse["Search"] as! [[String: String]]
                     for movie in searchResults {
                         let movieResult = MovieInfo(movie: movie)
                         print(movieResult.title)
+                        resultsArray.append(movieResult)
                     }
+                    completion(resultsArray)
                     
                 } catch {
                     
@@ -32,6 +35,16 @@ class APIClient {
                 
                 
             }
+        }
+        dataTask.resume()
+    }
+    
+    class func getPoster(withURL: String, completion: @escaping (Data) -> ()) {
+        guard let url = URL(string: withURL) else {return}
+        let session = URLSession.shared
+        let dataTask = session.dataTask(with: url) { (data, response, error) in
+            guard let posterData = data else {return}
+            completion(posterData)
         }
         dataTask.resume()
     }

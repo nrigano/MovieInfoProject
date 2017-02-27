@@ -25,6 +25,7 @@ class APIClient {
                     for movie in searchResults {
                         let movieResult = MovieInfo(movie: movie)
                         print(movieResult.title)
+                        print(movieResult.imdbID)
                         resultsArray.append(movieResult)
                     }
                     completion(resultsArray)
@@ -49,8 +50,8 @@ class APIClient {
         dataTask.resume()
     }
     
-    
-    class func searchWithIMDB(withID: String, plotLength: String, completion: @escaping () -> ()) {
+    // added movieinfo to escaping below
+    class func searchWithIMDB(withID: String, plotLength: String, completion: @escaping (MovieInfo) -> ()) {
         let urlString = "http://www.omdbapi.com/?i=\(withID)&plot=\(plotLength)&r=json"
         guard let url = URL(string: urlString) else {return}
         let session = URLSession.shared
@@ -60,6 +61,7 @@ class APIClient {
                     let jsonResponse = try JSONSerialization.jsonObject(with: jsonData, options: []) as! [String: String]
                     let movieResult = MovieInfo(movie: jsonResponse)
                     dump(movieResult)
+                    completion(movieResult)
                     
                 } catch {
                     
@@ -72,5 +74,32 @@ class APIClient {
         dataTask.resume()
         
     }
+
+//
+    
+//    class func searchWithIMDB(withID: String, plotLength: String, completion: @escaping () -> ()) {
+//        let urlString = "http://www.omdbapi.com/?i=\(withID)&plot=\(plotLength)&r=json"
+//        guard let url = URL(string: urlString) else {return}
+//        let session = URLSession.shared
+//        let dataTask = session.dataTask(with: url) { (data, response, error) in
+//            if let jsonData = data {
+//                do {
+//                    let jsonResponse = try JSONSerialization.jsonObject(with: jsonData, options: []) as! [String: String]
+//                    let movieResult = MovieInfo(movie: jsonResponse)
+//                    dump(movieResult)
+//                    
+//                } catch {
+//                    
+//                }
+//                
+//                
+//            }
+//            
+//        }
+//        dataTask.resume()
+//        
+//    }
+    
+//
     
 }

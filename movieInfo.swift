@@ -11,13 +11,15 @@
 
 
 import Foundation
+import UIKit
 
 class MovieInfo {
     var title: String
     var year: String
     var imdbID: String
     var type: String
-    var poster: String
+    var poster: String?
+    var image: UIImage?
     
     var rated: String
     var released: String
@@ -61,9 +63,19 @@ class MovieInfo {
     }
     
     init(movie: [String: String]) {
+//        guard let title = movie["Title"],
+//            let year = movie["Year"]
+//            else { return nil }
+        
+        self.title = movie["Title"] ?? "No Title"
+        self.year = movie["Year"] ?? ""
+        self.poster = movie["Poster"]
+        
+        // this is nil coalescing*
+        
         if let title = movie["Title"] {self.title = title} else {self.title = ""}
         if let year = movie["Year"] {self.year = year} else {self.year = ""}
-        if let imdbID = movie["imdbIB"] {self.imdbID = imdbID} else {self.imdbID = ""}
+        if let imdbID = movie["imdbID"] {self.imdbID = imdbID} else {self.imdbID = ""}
         if let type = movie["Type"] {self.type = type} else {self.type = ""}
         if let poster = movie["Poster"] {self.poster = poster} else {self.poster = ""}
         if let rated = movie["Rated"] {self.rated = rated} else {self.rated = ""}

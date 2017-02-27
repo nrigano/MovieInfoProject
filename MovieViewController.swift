@@ -25,7 +25,7 @@ class MovieViewController: UIViewController, UICollectionViewDelegate, UICollect
         self.collectionView.dataSource = self
         self.collectionView.backgroundColor = UIColor.getRandomColor()
         
-        self.collectionView.register(UICollectionViewCell.self, forCellWithReuseIdentifier: resultsCellReuse)
+        self.collectionView.register(MovieCollectionViewCell.self, forCellWithReuseIdentifier: resultsCellReuse)
         
         self.view.addSubview(self.collectionView)
         let frame = self.view.frame
@@ -48,14 +48,29 @@ class MovieViewController: UIViewController, UICollectionViewDelegate, UICollect
     
     //So here I want to define each cell and populate based on search.
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "resultsCell", for: indexPath)
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "resultsCell", for: indexPath) as! MovieCollectionViewCell
         
         cell.backgroundColor = UIColor.getRandomColor()
         let movie = movieArray[indexPath.item]
-        let posterURL = movie.poster
-        APIClient.getPoster(withURL: posterURL) { (posterGotten) in
-            let image = UIImage(data: posterGotten)
-        } 
+        
+        if let posterURL = movie.poster {
+            
+            APIClient.getPoster(withURL: posterURL) { (posterGotten) in
+                let image = UIImage(data: posterGotten)
+                OperationQueue.main.addOperation {
+                    cell.imageView.image = image
+                }
+                
+            }
+            
+        } else {
+            
+            // provide default image here.
+        }
+        
+        
+        
+        
         return cell
     }
     
@@ -75,8 +90,27 @@ class MovieViewController: UIViewController, UICollectionViewDelegate, UICollect
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         var movieDetailViewController = MovieDetailViewController()
         movieDetailViewController.movie = movieArray[indexPath.item]
+        // OK, so what I think I *actually* want to do here is call the API with the specific imdbID for the selected movie
         self.navigationController?.pushViewController(movieDetailViewController, animated: true)
     }
+
+//    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+//        var movieDetailViewController = MovieDetailViewController()
+//        var movieID = movieArray[indexPath.item]
+//        var movieResult: MovieInfo
+//        
+////        APIClient.searchWithIMDB(withID: movieID.imdbID, plotLength: "full") { queryResults in
+////            self.movieResult = queryResults
+////            return movieResult
+////        }
+//        APIClient.searchWithIMDB(withID: movieID.imdbID, plotLength: "full") {chosenMovie in
+//            self.movieResult = chosenMovie
+//        }
+//        
+//        movieDetailViewController.movie = movieID
+//        // OK, so what I think I *actually* want to do here is call the API with the specific imdbID for the selected movie
+//        self.navigationController?.pushViewController(movieDetailViewController, animated: true)
+//    }
     
 
 

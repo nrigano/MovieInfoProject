@@ -8,6 +8,7 @@
 
 import Foundation
 import UIKit
+import CoreData
 
 class MovieDetailViewController: UIViewController {
     
@@ -24,6 +25,7 @@ class MovieDetailViewController: UIViewController {
     var runtimeLabel = UILabel()
     var genreLabel = UILabel()
     var faveButton = FavButton()
+    let coreDataStack = CoreDataStack.shared
     
     
     
@@ -104,9 +106,6 @@ class MovieDetailViewController: UIViewController {
         faveButton.centerXAnchor.constraint(equalTo: view.centerXAnchor, constant: 0).isActive = true
         faveButton.delegate = self
         
-        
-        
-        
     }
     
 }
@@ -121,10 +120,19 @@ extension MovieDetailViewController: FavButtonDelegate {
         // react to that.
         
         
+        //let testTask = Task(context: coreDataStack.context)
+        
+        ///let testFave = Fave(entity: NSEntityDescription.entity(forEntityName: "Fave", in: coreDataStack.context)!, insertInto: coreDataStack.context)
+        let newFave = Fave(context: coreDataStack.context)
+//        newFave.name = ""
+//        newFave.actors = ""
+//        newFave.director = ""
+//        newFave.imdbID = ""
+//        newFave.posterThumbnail = ""
+//        newFave.writer = ""
+       newFave.title = ""
+        coreDataStack.saveContext()
+        
+       // print(newFave.imdbID)
     }
-    
-    
 }
-
-
-// next: create movie detail view.  then make picture appear.  Then on to core data to save movies.  need to add button to save to core data: need an empty star and a full star.  could also use blank circle/full circle or something.  Is it better to do everything in the VWA or to do it all in a funciton and call the function?

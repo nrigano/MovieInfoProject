@@ -31,7 +31,8 @@ final class CoreDataStack {
         
         container.loadPersistentStores { storeDescription, error in
             if let error = error as NSError? {
-                print("Error: \(error.userInfo)")
+                fatalError("Error: \(error.userInfo)")
+                //print("Error: \(error.userInfo)")
             }
         }
         return container
@@ -50,9 +51,4 @@ final class CoreDataStack {
             }
         }
     }
-    
-    
-    
-    
-    
 }

@@ -67,11 +67,11 @@ class MovieInfo {
 //            let year = movie["Year"]
 //            else { return nil }
         
-        self.title = movie["Title"] ?? "No Title"
-        self.year = movie["Year"] ?? ""
-        self.poster = movie["Poster"]
-        
-        // this is nil coalescing*
+//        self.title = movie["Title"] ?? "No Title"
+//        self.year = movie["Year"] ?? ""
+//        self.poster = movie["Poster"]
+//        
+//        // this is nil coalescing*
         
         if let title = movie["Title"] {self.title = title} else {self.title = ""}
         if let year = movie["Year"] {self.year = year} else {self.year = ""}

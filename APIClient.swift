@@ -33,8 +33,6 @@ class APIClient {
                 } catch {
                     
                 }
-                
-                
             }
         }
         dataTask.resume()
@@ -66,40 +64,8 @@ class APIClient {
                 } catch {
                     
                 }
-                
-                
             }
-            
         }
         dataTask.resume()
-        
     }
-
-//
-    
-//    class func searchWithIMDB(withID: String, plotLength: String, completion: @escaping () -> ()) {
-//        let urlString = "http://www.omdbapi.com/?i=\(withID)&plot=\(plotLength)&r=json"
-//        guard let url = URL(string: urlString) else {return}
-//        let session = URLSession.shared
-//        let dataTask = session.dataTask(with: url) { (data, response, error) in
-//            if let jsonData = data {
-//                do {
-//                    let jsonResponse = try JSONSerialization.jsonObject(with: jsonData, options: []) as! [String: String]
-//                    let movieResult = MovieInfo(movie: jsonResponse)
-//                    dump(movieResult)
-//                    
-//                } catch {
-//                    
-//                }
-//                
-//                
-//            }
-//            
-//        }
-//        dataTask.resume()
-//        
-//    }
-    
-//
-    
 }

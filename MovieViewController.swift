@@ -6,8 +6,7 @@
 //  Copyright © 2017 Nick. All rights reserved.
 //
 
-
-// SO!  Next: work on creating next view and also handoff.  Then work on ImageView for
+//build a listview based off fetchedMovies? I don't even fucking know
 
 import Foundation
 import UIKit
@@ -17,10 +16,14 @@ class MovieViewController: UIViewController, UICollectionViewDelegate, UICollect
     private var collectionView: UICollectionView = UICollectionView(frame: CGRect.zero, collectionViewLayout: UICollectionViewFlowLayout())
     private var movieArray = [MovieInfo]()
     
+    
+    var store = MovieDataStore.sharedInstance
+    let coreDataStack = CoreDataStack.shared
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         print("I'm running!")
-        
+
         self.collectionView.delegate = self
         self.collectionView.dataSource = self
         self.collectionView.backgroundColor = UIColor.getRandomColor()
@@ -35,6 +38,10 @@ class MovieViewController: UIViewController, UICollectionViewDelegate, UICollect
             OperationQueue.main.addOperation {
                 self.collectionView.reloadData()
             }
+        }
+        
+        store.fetchMovies(title: "lebowski") {
+            self.collectionView.reloadData()
         }
     
     }
@@ -90,29 +97,6 @@ class MovieViewController: UIViewController, UICollectionViewDelegate, UICollect
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         var movieDetailViewController = MovieDetailViewController()
         movieDetailViewController.movie = movieArray[indexPath.item]
-        // OK, so what I think I *actually* want to do here is call the API with the specific imdbID for the selected movie
         self.navigationController?.pushViewController(movieDetailViewController, animated: true)
     }
-
-//    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-//        var movieDetailViewController = MovieDetailViewController()
-//        var movieID = movieArray[indexPath.item]
-//        var movieResult: MovieInfo
-//        
-////        APIClient.searchWithIMDB(withID: movieID.imdbID, plotLength: "full") { queryResults in
-////            self.movieResult = queryResults
-////            return movieResult
-////        }
-//        APIClient.searchWithIMDB(withID: movieID.imdbID, plotLength: "full") {chosenMovie in
-//            self.movieResult = chosenMovie
-//        }
-//        
-//        movieDetailViewController.movie = movieID
-//        // OK, so what I think I *actually* want to do here is call the API with the specific imdbID for the selected movie
-//        self.navigationController?.pushViewController(movieDetailViewController, animated: true)
-//    }
-    
-
-
-    
 }

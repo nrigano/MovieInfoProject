@@ -58,6 +58,8 @@ class MovieViewController: UIViewController, UICollectionViewDelegate, UICollect
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "resultsCell", for: indexPath) as! MovieCollectionViewCell
         
         cell.backgroundColor = UIColor.getRandomColor()
+        let image = UIImage(named: "no-poster-available.jpg")
+        cell.imageView.image = image
         let movie = movieArray[indexPath.item]
         
         if let posterURL = movie.poster {

@@ -118,21 +118,15 @@ extension MovieDetailViewController: FavButtonDelegate {
         print("isFavorited is tapped: \(isFavorited)")
         
         // react to that.
-        
-        
-        //let testTask = Task(context: coreDataStack.context)
-        
-        ///let testFave = Fave(entity: NSEntityDescription.entity(forEntityName: "Fave", in: coreDataStack.context)!, insertInto: coreDataStack.context)
         let newFave = Fave(context: coreDataStack.context)
-//        newFave.name = ""
-//        newFave.actors = ""
-//        newFave.director = ""
-//        newFave.imdbID = ""
-//        newFave.posterThumbnail = ""
-//        newFave.writer = ""
-       newFave.title = ""
+        newFave.actors = movie?.actors
+        newFave.director = movie?.director
+        newFave.imdbID = movie?.imdbID
+        newFave.posterThumbnail = movie?.poster
+        newFave.title = movie?.title
         coreDataStack.saveContext()
+        //could I turn this into an extension?  of movie?  movie.addfavorite?
         
-       // print(newFave.imdbID)
+        print(newFave.imdbID)
     }
 }

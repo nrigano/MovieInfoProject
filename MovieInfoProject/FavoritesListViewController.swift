@@ -31,9 +31,32 @@ class FavoritesListViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "faveCell", for: indexPath)
+        let chosenMovie = store.savedMovies[indexPath.row]
         cell.backgroundColor = UIColor.getRandomColor()
+        cell.textLabel?.text = chosenMovie.title
         return cell
     }
+    
+    func 
+    
+    
+//    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+//        if segue.identifier != "MovieDetailView" { return }
+//        if let dest = segue.destination as? MovieDetailViewController,
+//            let indexPath = tableView.indexPathForSelectedRow {
+//            
+//            
+//        }
+    
+    
+        
+//
+//        var movieDetailViewController = MovieDetailViewController()
+//        movieDetailViewController.movie = store.savedMovies
+//        self.navigationController?.pushViewController(movieDetailViewController, animated: true)
+        
+//    }
+    
     
     
     
